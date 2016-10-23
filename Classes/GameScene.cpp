@@ -202,13 +202,14 @@ bool GameScene::onTouchBegan(Touch* touch, Event * event)
                             
                             Rect bgSize = this->getChildByTag(0)->getBoundingBox();
                             Vec2 singleTileSize = Vec2(bgSize.size.width/tilesW, bgSize.size.height/tilesH);
-                            float scaleW = tile[WH].sprite->getBoundingBox().size.width/singleTileSize.x;
-                            float scaleH = tile[WH].sprite->getBoundingBox().size.height/singleTileSize.y;
+                            float scaleW = singleTileSize.x/tile[WH].sprite->getBoundingBox().size.width;
+                            float scaleH = singleTileSize.y/tile[WH].sprite->getBoundingBox().size.height;
                             scaleW = (scaleW*85)/100;
                             scaleH = (scaleH*85)/100;
                             tile[WH].sprite->setScale(scaleH, scaleW);
                             
                             int won = checkVictory();
+                            
                             
                             if ( won != 0){
                                 Director::getInstance()->replaceScene(WinScene::createScene(won));
@@ -418,8 +419,8 @@ void GameScene::setSquareWon(int startingPos){
                 tile[pos[i]].sprite->setTexture("x.png");
                 tile[pos[i]].sprite->setColor(Color3B::WHITE);
                 tile[pos[i]].sprite->setOpacity(255);
-                float scaleW = tile[pos[i]].sprite->getBoundingBox().size.width/singleTileSize.x;
-                float scaleH = tile[pos[i]].sprite->getBoundingBox().size.height/singleTileSize.y;
+                float scaleW = singleTileSize.x/tile[pos[i]].sprite->getBoundingBox().size.width;
+                float scaleH = singleTileSize.y/tile[pos[i]].sprite->getBoundingBox().size.height;
                 scaleW = (scaleW*85)/100;
                 scaleH = (scaleH*85)/100;
                 tile[pos[i]].sprite->setScale(scaleH, scaleW);
@@ -432,8 +433,8 @@ void GameScene::setSquareWon(int startingPos){
                 tile[pos[i]].sprite->setTexture("o.png");
                 tile[pos[i]].sprite->setColor(Color3B::WHITE);
                 tile[pos[i]].sprite->setOpacity(255);
-                float scaleW = tile[pos[i]].sprite->getBoundingBox().size.width/singleTileSize.x;
-                float scaleH = tile[pos[i]].sprite->getBoundingBox().size.height/singleTileSize.y;
+                float scaleW = singleTileSize.x/tile[pos[i]].sprite->getBoundingBox().size.width;
+                float scaleH = singleTileSize.y/tile[pos[i]].sprite->getBoundingBox().size.height;
                 scaleW = (scaleW*85)/100;
                 scaleH = (scaleH*85)/100;
                 tile[pos[i]].sprite->setScale(scaleH, scaleW);
